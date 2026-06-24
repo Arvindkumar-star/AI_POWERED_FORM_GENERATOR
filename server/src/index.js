@@ -26,10 +26,11 @@ app.use(
       }
 
       return callback(new Error(`CORS blocked for origin: ${origin}`))
-    }
+    },
+    credentials: true
   })
 )
-
+app.options('*', cors())
 app.use(express.json())
 
 app.get('/api/health', (_req, res) => {
